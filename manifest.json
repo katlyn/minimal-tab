@@ -1,7 +1,7 @@
 {
   "name": "Minimal Tab",
   "manifest_version": 2,
-  "version": "0.0.5",
+  "version": "0.0.5.1",
   "description": "The bare minimum new tab.",
   "permissions": [
     "storage"

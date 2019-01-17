@@ -1,3 +1,6 @@
+# v0.0.5.1
+Fix landscape images potentially being too small for user's screen.
+
 # v0.0.5
 Add logic for landscape/portrait screens. This should make the pages look nicer overall.
 

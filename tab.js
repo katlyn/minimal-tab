@@ -248,8 +248,8 @@ async function initSettings() {
 
   // Fade in image
   let background = new Image()
-  background.src = `${currentImage.url}&w=1080`
+  background.src = `${currentImage.url}${(window.innerWidth > window.innerHeight) ? '&w=' + window.screen.width : '&h=' + window.screen.height}`
   background.onload = () => {
-    transition.in(`${currentImage.url}&w=1080`)
+    transition.in(`${currentImage.url}${(window.innerWidth > window.innerHeight) ? '&w=' + window.screen.width : '&h=' + window.screen.height}`)
   }
 }
