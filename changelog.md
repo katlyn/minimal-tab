@@ -1,3 +1,6 @@
+# v0.0.5
+Add logic for landscape/portrait screens. This should make the pages look nicer overall.
+
 # v0.0.4
 Add different transition modes. These include slide, fast slide, and fade (default) at this point in time.
 

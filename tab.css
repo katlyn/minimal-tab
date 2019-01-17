@@ -156,6 +156,29 @@ body.image-slide {
   transform-origin: center;
 }
 
+.menu-options.toggle.multiple > .menu-option.toggle-selected:hover:after,
+.menu-options.toggle.multiple > .menu-option.toggle-selected:hover:before {
+  border: none;
+  content: " ";
+  display: block;
+  height: 1px;
+  width: 15px;
+  left: 170px;
+  top: 19px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: center;
+  background-color: #fff;
+}
+
+.menu-options.toggle.multiple > .menu-option.toggle-selected:hover:before {
+  transform: rotate(-45deg);
+}
+
+.menu-options.toggle.multiple > .menu-option.toggle-selected:hover:after {
+  transform: rotate(45deg);
+}
+
 @keyframes menu-fadein {
   0% { opacity: 0; display: none;}
   1% { opacity: 0; display: block; }

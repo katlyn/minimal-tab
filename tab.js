@@ -232,6 +232,7 @@ async function initSettings() {
   transitionSettings.classList.add('toggle-selected')
 
   await transition.init()
+
   let currentImage
   let { imageLock } = await Storage.get('imageLock')
   console.log(imageLock ? 'Image locked, not fetching new image' : 'Fetching new image.')
@@ -240,7 +241,7 @@ async function initSettings() {
     imageLockElement.textContent = 'Unlock Image'
     currentImage = (await Storage.get('currentImage')).currentImage
   } else {
-    currentImage = (await fetch('https://minimal.gordhoard.org/api/random')
+    currentImage = (await fetch(`https://minimal.gordhoard.org/api/random/${(window.innerWidth > window.innerHeight) ? 'landscape' : 'portrait'}`)
       .then(res => { return res.json() }))
     Storage.set({ currentImage })
   }
