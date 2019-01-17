@@ -1,0 +1,12 @@
+{
+  "name": "Minimal Tab",
+  "manifest_version": 2,
+  "version": "0.0.4",
+  "description": "The bare minimum new tab.",
+  "permissions": [
+    "storage"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "./tab.html"
+  }
+}

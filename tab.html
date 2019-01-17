@@ -1,0 +1,28 @@
+<head>
+  <title>New Tab</title>
+  <link href="./tab.css" rel="stylesheet">
+</head>
+<body>
+  <div id="overlay"></div>
+  <div id="secondary-overlay"></div>
+
+  <div class="menu">
+    <ul class="menu-options">
+      <li class="menu-option" data-action="shuffle">Shuffle Image</li>
+      <li class="menu-option js-imagelock" data-action="toggleLock">Lock Image</li>
+      <li class="menu-option has-submenu">
+        Transition
+        <div class="menu">
+          <ul class="menu-options toggle">
+            <li class="menu-option js-transition-fade" data-action="transitionChange" data-params="fade">Fade</li>
+            <li class="menu-option js-transition-slide" data-action="transitionChange" data-params="slide">Slide</li>
+            <li class="menu-option js-transition-slideFast" data-action="transitionChange" data-params="slideFast">Fast Slide</li>
+          </ul>
+        </div>
+      </li>
+      <li class="menu-option" data-action="imageCredits">Image Credits</li>
+    </ul>
+  </div>
+  
+  <script src="./tab.js"></script>
+</body>
