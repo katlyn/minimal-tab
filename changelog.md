@@ -1,3 +1,6 @@
+# v0.0.5.2
+Same as previous but with random images.
+
 # v0.0.5.1
 Fix landscape images potentially being too small for user's screen.
 

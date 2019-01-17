@@ -178,9 +178,9 @@ const contextActions = {
     let currentImage = randomImages[Math.floor(Math.random() * randomImages.length)]
     let image = new Image()
     image.onload = () => {
-      transition.in(`${currentImage.url}&w=1080`)
+      transition.in(`${currentImage.url}${(window.innerWidth > window.innerHeight) ? '&w=' + window.screen.width : '&h=' + window.screen.height}`)
     }
-    image.src = `${currentImage.url}&w=1080`
+    image.src = `${currentImage.url}${(window.innerWidth > window.innerHeight) ? '&w=' + window.screen.width : '&h=' + window.screen.height}`
     Storage.set({ currentImage })
   },
   imageCredits: async () => {
