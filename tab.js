@@ -1,3 +1,5 @@
+apiRoot = 'https://minimal.gordhoard.org'
+
 // Chrome storage wrapper
 class Storage {
   static get(key) {
@@ -172,7 +174,7 @@ const contextActions = {
     menu.style.left = ''
 
     await transition.out()
-    let randomImages = (await fetch('https://minimal.gordhoard.org/api/random/bulk')
+    let randomImages = (await fetch(`${apiRoot}/api/random/bulk?orientation=${(window.innerWidth > window.innerHeight) ? 'landscape' : 'portrait'}`)
       .then(res => { return res.json() }))
     // Select random from array
     let currentImage = randomImages[Math.floor(Math.random() * randomImages.length)]
@@ -241,7 +243,7 @@ async function initSettings() {
     imageLockElement.textContent = 'Unlock Image'
     currentImage = (await Storage.get('currentImage')).currentImage
   } else {
-    currentImage = (await fetch(`https://minimal.gordhoard.org/api/random/${(window.innerWidth > window.innerHeight) ? 'landscape' : 'portrait'}`)
+    currentImage = (await fetch(`${apiRoot}/api/random/${(window.innerWidth > window.innerHeight) ? 'landscape' : 'portrait'}`)
       .then(res => { return res.json() }))
     Storage.set({ currentImage })
   }

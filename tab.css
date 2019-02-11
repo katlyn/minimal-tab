@@ -78,6 +78,8 @@ body.image-slide {
 
   animation-duration: 0.2s;
   animation-name: menu-fadein;
+
+  transition: top 0.1s ease-out, left 0.1s ease-out;
 }
 
 .menu > .menu-options {

@@ -1,3 +1,6 @@
+# v0.0.6.0
+Make sure that random images are the correct orientation.
+
 # v0.0.5.2
 Same as previous but with random images.
 
