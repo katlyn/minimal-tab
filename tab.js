@@ -1,4 +1,6 @@
-apiRoot = 'https://minimal.gordhoard.org'
+let apiRoot = 'https://minimal.gordhoard.org'
+
+let imageEl = document.getElementById('image')
 
 // Chrome storage wrapper
 class Storage {
@@ -25,8 +27,8 @@ const transitions = {
   fade: {
     in: image => {
       return new Promise(res => {
-        document.body.style.background = `url(${image}) no-repeat center center fixed`
-        document.body.style.backgroundSize = 'cover'
+        imageEl.style.background = `url(${image}) no-repeat center center fixed`
+        imageEl.style.backgroundSize = 'cover'
         let overlay = document.getElementById('overlay')
         overlay.classList.add('transparent')
         overlay.addEventListener('transitionend', () => {
@@ -51,8 +53,8 @@ const transitions = {
   slide: {
     in: image => {
       return new Promise(res => {
-        document.body.style.background = `url(${image}) no-repeat center center fixed`
-        document.body.style.backgroundSize = 'cover'
+        imageEl.style.background = `url(${image}) no-repeat center center fixed`
+        imageEl.style.backgroundSize = 'cover'
         let overlay = document.getElementById('overlay')
         let secondaryOverlay = document.getElementById('secondary-overlay')
         
@@ -103,8 +105,8 @@ const transitions = {
   slideFast: {
     in: image => {
       return new Promise(res => {
-        document.body.style.background = `url(${image}) no-repeat center center fixed`
-        document.body.style.backgroundSize = 'cover'
+        imageEl.style.background = `url(${image}) no-repeat center center fixed`
+        imageEl.style.backgroundSize = 'cover'
         let overlay = document.getElementById('overlay')
         let secondaryOverlay = document.getElementById('secondary-overlay')
         
@@ -201,12 +203,17 @@ const contextActions = {
     await Storage.set({ transitionMode })
     await transition.out()
     location.reload()
+  },
+  toggleBlur: async (params, el) => {
+    await Storage.set({ blur: !(await Storage.get('blur')).blur})
+    image.classList.toggle('blur')
+    el.classList.toggle('toggle-selected')
   }
 }
 
 window.addEventListener('click', e => {
   if (menu.contains(e.target) || menu === e.target) {
-    if (e.target.dataset.action && contextActions[e.target.dataset.action]) contextActions[e.target.dataset.action](e.target.dataset.params)
+    if (e.target.dataset.action && contextActions[e.target.dataset.action]) contextActions[e.target.dataset.action](e.target.dataset.params, e.target)
   } else {
     menu.style.display = ''
     menu.style.top = ''
@@ -232,6 +239,12 @@ async function initSettings() {
   window.transition = transitions[transitionMode]
   let transitionSettings = document.querySelector(`.js-transition-${transitionMode}`)
   transitionSettings.classList.add('toggle-selected')
+
+  let { blur } = await Storage.get('blur')
+  if (blur) {
+    image.classList.add('blur')
+    document.querySelector('.js-blur').classList.add('toggle-selected')
+  }
 
   await transition.init()
 

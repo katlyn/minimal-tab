@@ -1,6 +1,19 @@
 body {
-  background-size: cover;
-  overflow: hidden;
+  background: rgb(0, 0, 0);
+}
+
+#image {
+  background: rgb(0, 0, 0);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: filter 0.5s ease-out;
+}
+
+#image.blur {
+  filter: blur(5px)
 }
 
 #overlay {

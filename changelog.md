@@ -1,3 +1,6 @@
+# v0.0.7.0
+Allow users to blur images if they wish.
+
 # v0.0.6.0
 Make sure that random images are the correct orientation.
 
