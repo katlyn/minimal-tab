@@ -1,6 +1,6 @@
-let apiRoot = 'https://minimal.gordhoard.org'
+const apiRoot = 'https://minimal.gordhoard.org'
 
-let imageEl = document.getElementById('image')
+const imageEl = document.getElementById('image')
 
 // Chrome storage wrapper
 class Storage {
@@ -211,28 +211,6 @@ const contextActions = {
   }
 }
 
-window.addEventListener('click', e => {
-  if (menu.contains(e.target) || menu === e.target) {
-    if (e.target.dataset.action && contextActions[e.target.dataset.action]) contextActions[e.target.dataset.action](e.target.dataset.params, e.target)
-  } else {
-    menu.style.display = ''
-    menu.style.top = ''
-    menu.style.left = ''
-  }
-})
-
-window.addEventListener("contextmenu", e => {
-  e.preventDefault()
-  if (menu.contains(e.target) || menu === e.target) return
-  menu.style.top = `${e.pageY}px`
-  menu.style.left = `${e.pageX}px`
-  if (getComputedStyle(menu).display === 'none') {
-    menu.style.display = 'block'
-  }
-})
-
-initSettings()
-
 async function initSettings() {
   let { transitionMode } = await Storage.get('transitionMode')
   if (!transitionMode) transitionMode = 'fade'
@@ -268,3 +246,25 @@ async function initSettings() {
     transition.in(`${currentImage.url}${(window.innerWidth > window.innerHeight) ? '&w=' + window.screen.width : '&h=' + window.screen.height}`)
   }
 }
+
+window.addEventListener('click', e => {
+  if (menu.contains(e.target) || menu === e.target) {
+    if (e.target.dataset.action && contextActions[e.target.dataset.action]) contextActions[e.target.dataset.action](e.target.dataset.params, e.target)
+  } else {
+    menu.style.display = ''
+    menu.style.top = ''
+    menu.style.left = ''
+  }
+})
+
+window.addEventListener("contextmenu", e => {
+  e.preventDefault()
+  if (menu.contains(e.target) || menu === e.target) return
+  menu.style.top = `${e.pageY}px`
+  menu.style.left = `${e.pageX}px`
+  if (getComputedStyle(menu).display === 'none') {
+    menu.style.display = 'block'
+  }
+})
+
+initSettings()
