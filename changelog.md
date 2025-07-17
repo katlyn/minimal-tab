@@ -1,3 +1,6 @@
+# v0.1.0.0
+Update extension to manifest v3 to comply with new web store requirements.
+
 # v0.0.7.0
 Allow users to blur images if they wish.
 

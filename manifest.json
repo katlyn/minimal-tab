@@ -1,12 +1,17 @@
 {
   "name": "Minimal Tab",
-  "manifest_version": 2,
-  "version": "0.0.7.0",
+  "manifest_version": 3,
+  "version": "0.0.8.1",
   "description": "The bare minimum new tab.",
   "permissions": [
     "storage"
   ],
   "chrome_url_overrides": {
     "newtab": "./tab.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{0f301935-00a3-4a19-9219-4a0c3c0836a0}"
+    }
   }
 }
